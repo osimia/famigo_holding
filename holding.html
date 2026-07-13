@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAMIGO — пищевой холдинг Центральной Азии</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F8F9;
+    --cream-2:#F4FBF9;
+    --ink:#222222;
+    --olive-dark:#064030;
+    --olive:#39B980;
+    --olive-soft:#73787D;
+    --paprika:#FF9F2D;
+    --gold:#FFD166;
+    --line:#E7ECEF;
+    --white-ish:#FFFFFF;
+    --radius:24px;
+    --max:1600px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:#fff;
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--olive-dark);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+  h1,h2,h3,.display{font-family:'Inter',sans-serif;}
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--olive);
+  }
+  :focus-visible{outline:2px solid var(--paprika);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:78px;
+  }
+  .logo{
+    font-family:'Inter',sans-serif;
+    font-weight:800;
+    font-size:24px;
+    letter-spacing:0;
+    display:flex;align-items:baseline;gap:6px;
+  }
+  .logo span{color:var(--olive);font-style:normal;font-weight:800;}
+  .nav-links{display:flex;gap:24px;font-size:14px;font-weight:500;}
+  .nav-links a{position:relative;padding:4px 0;}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+    background:var(--olive);transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-actions{display:flex;align-items:center;gap:12px;}
+  .lang-switch{
+    height:42px;border:1px solid var(--line);border-radius:10px;
+    background:#fff;color:var(--ink);font-family:'Inter',sans-serif;
+    font-size:13px;font-weight:700;padding:0 10px;cursor:pointer;
+  }
+  .nav-cta{
+    border:1px solid var(--line);
+    padding:11px 18px;font-size:13px;font-weight:700;
+    border-radius:10px;
+    background:#fff;
+  }
+  .nav-toggle{display:none;}
+  @media (max-width:820px){
+    .nav-links{display:none;}
+    .nav-actions{gap:8px;}
+    .lang-switch{height:38px;font-size:12px;padding:0 8px;}
+    .nav-cta{padding:8px 14px;font-size:12px;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:30px 0 80px;
+    position:relative;
+    overflow:hidden;
+    background:#fff;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1fr .9fr;gap:42px;align-items:center;
+    width:calc(100% - 48px);
+    max-width:var(--max);
+    min-height:480px;
+    padding:70px 80px;
+    border-radius:var(--radius);
+    color:#fff;
+    background:linear-gradient(115deg,#064030 0%,#12865B 52%,#39B980 100%);
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-grid::after{
+    content:"";position:absolute;right:-110px;top:-90px;width:420px;height:420px;
+    border-radius:50%;background:rgba(255,255,255,.16);pointer-events:none;
+  }
+  .hero h1{
+    font-size:64px;
+    font-weight:800;
+    line-height:1.05;
+    letter-spacing:0;
+  }
+  .hero .eyebrow{color:rgba(255,255,255,.72);}
+  .hero h1 em{font-style:normal;font-weight:800;color:#D9FFE8;}
+  .hero p.lede{
+    margin-top:26px;max-width:620px;
+    font-size:18px;color:rgba(255,255,255,.88);
+  }
+  .hero-actions{margin-top:38px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:#fff;color:var(--olive);
+    padding:16px 30px;font-size:15px;font-weight:800;
+    border-radius:10px;letter-spacing:0;
+    transition:background .2s ease;
+  }
+  .btn-primary:hover{background:#F4FBF9;}
+  .btn-ghost{
+    font-size:15px;font-weight:700;color:#fff;
+    border-bottom:1px solid rgba(255,255,255,.72);padding-bottom:2px;
+  }
+  .hero-media{
+    position:relative;z-index:1;align-self:stretch;min-height:320px;
+    border-radius:24px;overflow:hidden;background:rgba(255,255,255,.12);
+    box-shadow:0 24px 70px rgba(0,0,0,.22);
+  }
+  .hero-media video{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-media::after{
+    content:"FAMIGO";position:absolute;right:18px;bottom:16px;
+    color:#fff;font-weight:800;font-size:13px;letter-spacing:.12em;
+    background:rgba(6,64,48,.62);padding:8px 12px;border-radius:999px;
+  }
+
+  /* thin divider */
+  .rule{height:1px;background:var(--line);width:100%;}
+
+  /* ---------- STATS ---------- */
+  .stats{padding:0 0 78px;border-bottom:none;background:#fff;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .stats-grid > div{
+    background:var(--cream-2);
+    border-radius:var(--radius);
+    padding:28px 28px 34px;
+    min-height:170px;
+  }
+  .stat-num{
+    font-family:'Inter',sans-serif;font-size:46px;font-weight:800;
+    line-height:1;color:var(--olive);
+  }
+  .stat-label{margin-top:10px;font-size:13px;color:var(--olive);max-width:180px;}
+  @media (max-width:820px){.stats-grid{grid-template-columns:repeat(2,1fr);row-gap:36px;}}
+
+  /* ---------- SECTION HEADS ---------- */
+  section{padding:92px 0;background:#fff;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:42px;font-weight:800;margin-top:14px;line-height:1.12;}
+  .section-head p{margin-top:18px;font-size:16px;color:var(--olive-dark);max-width:520px;}
+
+  /* ---------- WHO WE ARE / INTRO ---------- */
+  .intro{border-top:1px solid var(--line);background:var(--cream);}
+  .intro-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start;}
+  .intro-text p{font-size:17px;color:var(--olive-dark);margin-bottom:18px;}
+  .intro-text p:first-child{font-size:22px;color:var(--ink);font-family:'Inter',sans-serif;font-weight:700;line-height:1.35;}
+
+  /* ---------- GEOGRAPHY ---------- */
+  .geo{border-top:1px solid var(--line);background:var(--cream-2);}
+  .geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  .geo-col h3{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:22px;font-family:'Inter',sans-serif;font-weight:700;}
+  .geo-item{
+    display:flex;align-items:center;gap:14px;
+    padding:16px 0;border-bottom:1px solid var(--line);
+    font-family:'Inter',sans-serif;font-size:20px;font-weight:700;
+  }
+  .geo-item:first-child{border-top:1px solid var(--line);}
+  .geo-item .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .geo-col.active .dot{background:var(--paprika);}
+  .geo-col.explore .dot{background:transparent;border:1px solid var(--olive-soft);}
+  .geo-col.explore .geo-item{color:var(--olive-soft);}
+
+  /* ---------- BRANDS ---------- */
+  .brands{border-top:1px solid var(--line);}
+  .brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;background:transparent;border:none;}
+  .brand-card{
+    background:var(--cream-2);padding:34px 30px;min-height:250px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    border-radius:var(--radius);
+    transition:background .25s ease;
+  }
+  .brand-card:hover{background:#EEF9F4;}
+  .brand-mark{font-family:'Inter',sans-serif;font-style:normal;font-weight:800;font-size:26px;color:var(--ink);}
+  .brand-desc{margin-top:16px;font-size:14.5px;color:var(--olive-dark);line-height:1.55;}
+  .brand-cat{margin-top:22px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--olive);}
+  @media (max-width:900px){.brand-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:600px){.brand-grid{grid-template-columns:1fr;}}
+
+  /* ---------- PRODUCTS PHOTO RAIL ---------- */
+  .products{border-top:1px solid var(--line);}
+  .products .section-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:24px;max-width:none;
+  }
+  .product-nav{display:flex;gap:12px;flex-shrink:0;}
+  .product-nav button{
+    width:58px;height:58px;border:none;border-radius:999px;
+    background:var(--cream);color:var(--olive-dark);
+    font-size:30px;line-height:1;cursor:pointer;
+    display:grid;place-items:center;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .product-nav button:hover{background:var(--cream-2);transform:translateY(-1px);}
+  .product-rail{overflow:hidden;margin-top:18px;}
+  .product-track{
+    display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;padding-bottom:10px;
+    scrollbar-width:none;
+  }
+  .product-track::-webkit-scrollbar{display:none;}
+  .product-slide{
+    flex:0 0 clamp(280px,28vw,430px);
+    aspect-ratio:4/3;
+    border-radius:var(--radius);
+    overflow:hidden;background:var(--cream);
+    scroll-snap-align:start;
+  }
+  .product-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+  @media (max-width:900px){
+    .products .section-head{align-items:flex-start;}
+    .product-nav button{width:50px;height:50px;font-size:26px;}
+    .product-slide{flex-basis:82vw;}
+  }
+
+  /* ---------- QUALITY BAND (dark) ---------- */
+  .quality{
+    background:#020403;color:#fff;
+  }
+  .quality .eyebrow{color:var(--gold);}
+  .quality-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .quality h2{color:#fff;font-size:44px;font-weight:800;margin-top:14px;line-height:1.1;}
+  .quality-list{margin-top:28px;}
+  .quality-list li{
+    list-style:none;padding:18px 0;border-top:1px solid rgba(247,244,233,.18);
+    display:flex;gap:18px;align-items:baseline;
+  }
+  .quality-list li:last-child{border-bottom:1px solid rgba(247,244,233,.18);}
+  .quality-list .num{font-family:'Inter',sans-serif;font-style:normal;color:var(--olive);font-size:15px;font-weight:800;flex-shrink:0;width:28px;}
+  .quality-list .txt{font-size:15px;color:#DCD6C2;}
+  .quality-art{
+    display:flex;justify-content:center;
+  }
+  .quality-photo{
+    width:min(100%,520px);
+    aspect-ratio:1/1;
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 26px 70px rgba(0,0,0,.35);
+    background:#111;
+  }
+  .quality-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{border-top:1px solid var(--line);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .contact h2{font-size:42px;font-weight:800;margin-top:14px;line-height:1.12;}
+  .contact p.lede{margin-top:18px;font-size:16px;color:var(--olive-dark);max-width:420px;}
+  form{margin-top:8px;}
+  .field{margin-bottom:22px;}
+  .field label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--olive);margin-bottom:8px;}
+  .field input, .field textarea{
+    width:100%;border:none;border-bottom:1px solid var(--olive-soft);
+    background:transparent;padding:10px 2px;font-family:'Inter',sans-serif;
+    font-size:16px;color:var(--ink);
+  }
+  .field input:focus, .field textarea:focus{border-bottom-color:var(--paprika);}
+  .field textarea{resize:vertical;min-height:80px;}
+  .submit-btn{
+    background:var(--olive);color:#fff;
+    padding:15px 30px;font-size:14px;font-weight:800;border:none;
+    border-radius:10px;cursor:pointer;transition:background .2s ease;
+  }
+  .submit-btn:hover{background:var(--ink);}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:56px 0 40px;}
+  .footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr;gap:32px;}
+  .footer-brand .logo{margin-bottom:14px;}
+  .footer-brand p{font-size:13.5px;color:var(--olive);max-width:240px;}
+  .footer-col h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;}
+  .footer-col a{display:block;font-size:14px;margin-bottom:10px;color:var(--olive-dark);}
+  .footer-bottom{
+    margin-top:52px;padding-top:24px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;font-size:12.5px;color:var(--olive-soft);
+    flex-wrap:wrap;gap:10px;
+  }
+  @media (max-width:820px){.footer-grid{grid-template-columns:1fr 1fr;row-gap:32px;}}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:900px){
+    .intro-grid, .geo-grid, .quality-grid, .contact-grid{grid-template-columns:1fr;}
+    .hero{padding-top:18px;}
+    .hero-grid{grid-template-columns:1fr;width:calc(100% - 32px);padding:34px 24px;min-height:auto;gap:28px;}
+    .hero h1{font-size:42px;}
+    .hero p.lede{font-size:16px;}
+    .hero-media{min-height:260px;}
+    .section-head h2, .contact h2, .quality h2{font-size:34px;}
+  }
+  /* ---------- HISTORY / TIMELINE ---------- */
+  .history{border-top:1px solid var(--line);padding-bottom:0;background:#fff;}
+  .history-scroll{height:240vh;position:relative;margin-top:10px;}
+  .history-sticky{
+    position:sticky;top:76px;height:calc(100vh - 76px);
+    display:flex;align-items:flex-start;overflow:hidden;
+    padding-top:42px;
+  }
+  .timeline{
+    display:flex;gap:22px;width:max-content;
+    padding:0 max(32px,calc((100vw - var(--max)) / 2 + 32px)) 54px;
+    will-change:transform;
+  }
+  .tl-item{
+    flex:0 0 clamp(270px,30vw,390px);
+    min-height:250px;
+    background:var(--cream-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+    box-shadow:none;
+  }
+  .tl-year{
+    display:block;font-family:'Inter',sans-serif;font-size:42px;font-weight:800;color:var(--olive);
+  }
+  .tl-text{
+    display:block;margin-top:26px;font-size:18px;color:var(--olive-dark);line-height:1.42;
+  }
+  .tl-note{
+    display:block;margin-top:18px;font-size:13px;color:var(--olive);
+    border-top:1px solid var(--line);padding-top:16px;
+  }
+  @media (max-width:820px){
+    .history-scroll{height:230vh;}
+    .history-sticky{top:76px;height:calc(100vh - 76px);}
+    .timeline{gap:14px;padding-left:20px;padding-right:20px;}
+    .tl-item{flex-basis:78vw;min-height:230px;padding:24px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .history-scroll{height:auto;}
+    .history-sticky{position:relative;top:auto;height:auto;overflow-x:auto;}
+    .timeline{transform:none !important;}
+  }
+
+  /* ---------- DIRECTIONS (production sites) ---------- */
+  .directions{border-top:1px solid var(--line);}
+  .dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;background:transparent;border:none;}
+  .dir-card{background:var(--cream-2);padding:30px 24px;display:flex;flex-direction:column;gap:14px;border-radius:var(--radius);}
+  .dir-city{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);font-weight:800;}
+  .dir-brand{font-family:'Inter',sans-serif;font-style:normal;font-weight:800;font-size:22px;color:var(--ink);}
+  .dir-row{display:flex;justify-content:space-between;font-size:13px;color:var(--olive-dark);border-top:1px solid var(--line);padding-top:10px;}
+  .dir-row span:first-child{color:var(--olive);}
+  @media (max-width:900px){.dir-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:600px){.dir-grid{grid-template-columns:1fr;}}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">famigo<span>.</span></div>
+    <nav class="nav-links">
+      <a href="#about">О холдинге</a>
+      <a href="#history">История</a>
+      <a href="#directions">Направления</a>
+      <a href="#brands">Бренды</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="nav-actions">
+      <select class="lang-switch" aria-label="Выбор языка">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
+      <a href="#contact" class="nav-cta">Связаться</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="eyebrow">Пищевой холдинг · с 2023 года</p>
+      <h1>Сухофрукты и орехи,<br>собранные <em>под одной крышей</em></h1>
+      <p class="lede">FAMIGO объединяет производственные направления Lola foods, Mazza и Happy Aisha в четырёх городах — от переработки сырья до поставок в торговые сети и на экспорт.</p>
+      <div class="hero-actions">
+        <a href="#brands" class="btn-primary">Наши бренды</a>
+        <a href="#about" class="btn-ghost">О холдинге →</a>
+      </div>
+    </div>
+    <div class="hero-media reveal">
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.png">
+        <source src="assets/hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<div class="stats reveal">
+  <div class="wrap stats-grid">
+    <div>
+      <div class="stat-num">2023</div>
+      <div class="stat-label">год основания холдинга FAMIGO</div>
+    </div>
+    <div>
+      <div class="stat-num">50+</div>
+      <div class="stat-label">человек в команде холдинга</div>
+    </div>
+    <div>
+      <div class="stat-num">5–10к</div>
+      <div class="stat-label">тонн продукции в год суммарно по всем направлениям</div>
+    </div>
+    <div>
+      <div class="stat-num">4</div>
+      <div class="stat-label">производственные площадки в трёх странах</div>
+    </div>
+  </div>
+</div>
+
+<section class="intro" id="about">
+  <div class="wrap intro-grid">
+    <div class="reveal">
+      <p class="eyebrow">О холдинге</p>
+      <h2>Локальные рецепты. Управление на уровне международного бизнеса.</h2>
+    </div>
+    <div class="intro-text reveal">
+      <p>Холдинг вырос из одного производства без единого сотрудника — сегодня в команде FAMIGO работает более 50 человек.</p>
+      <p>Наша цель — стать узнаваемым холдингом, на который другие компании региона будут смотреть как на пример: как выстраивать производство, качество и экспорт одновременно в нескольких странах.</p>
+      <p>Каждое направление — Lola foods, Mazza, Happy Aisha и производственные площадки под брендом Famigo — отвечает за свой рынок и продукт, опираясь на общую инфраструктуру холдинга.</p>
+    </div>
+  </div>
+</section>
+
+<section class="history" id="history">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">История</p>
+      <h2>От первого производства до холдинга в трёх странах</h2>
+    </div>
+  </div>
+  <div class="history-scroll">
+    <div class="history-sticky">
+      <div class="timeline reveal">
+        <div class="tl-item"><span class="tl-year">2013</span><span class="tl-text">Первое производство в России</span><span class="tl-note">Первые партии сухофруктов и орехов для локального рынка.</span></div>
+        <div class="tl-item"><span class="tl-year">2015</span><span class="tl-text">Выход в первую сеть супермаркетов</span><span class="tl-note">Появились регулярные поставки и понятная розничная упаковка.</span></div>
+        <div class="tl-item"><span class="tl-year">2017</span><span class="tl-text">Начало оптовой продажи</span><span class="tl-note">Компания усилила закупку, фасовку и работу с B2B-клиентами.</span></div>
+        <div class="tl-item"><span class="tl-year">2021</span><span class="tl-text">Создана компания Lola foods</span><span class="tl-note">Отдельное направление для сухофруктов, специй и чая в Москве.</span></div>
+        <div class="tl-item"><span class="tl-year">2022</span><span class="tl-text">Создан Famigo в Узбекистане</span><span class="tl-note">Ближе к сырью, фермерам и экспортной логистике региона.</span></div>
+        <div class="tl-item"><span class="tl-year">2025</span><span class="tl-text">Создана компания Mazza в Кыргызстане</span><span class="tl-note">Новая площадка для специй, сухофруктов и региональных поставок.</span></div>
+        <div class="tl-item"><span class="tl-year">2026</span><span class="tl-text">Открытие Famigo в Таджикистане</span><span class="tl-note">Расширение холдинга и укрепление производства в Центральной Азии.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="geo" id="geo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">География</p>
+      <h2>Растём за пределы одного рынка</h2>
+    </div>
+    <div class="geo-grid reveal">
+      <div class="geo-col active">
+        <h3>Уже поставляем</h3>
+        <div class="geo-item"><span class="dot"></span>Россия</div>
+      </div>
+      <div class="geo-col explore">
+        <h3>Рассматриваем</h3>
+        <div class="geo-item"><span class="dot"></span>Арабские страны</div>
+        <div class="geo-item"><span class="dot"></span>Европа</div>
+        <div class="geo-item"><span class="dot"></span>Китай</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="directions" id="directions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Производственные направления</p>
+      <h2>Четыре площадки, три страны</h2>
+      <p>Каждая площадка отвечает за свой регион сбыта — от торговых сетей до экспортных поставок.</p>
+    </div>
+    <div class="dir-grid reveal">
+      <div class="dir-card">
+        <div class="dir-city">Москва</div>
+        <div class="dir-brand">Lola foods</div>
+        <div class="dir-row"><span>Продукт</span><span>Сухофрукты, орехи</span></div>
+        <div class="dir-row"><span>Мощность</span><span>200–300 т/мес</span></div>
+        <div class="dir-row"><span>Каналы</span><span>Сети, опт</span></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-city">Ташкент</div>
+        <div class="dir-brand">Famigo</div>
+        <div class="dir-row"><span>Продукт</span><span>Сухофрукты, орехи</span></div>
+        <div class="dir-row"><span>Мощность</span><span>300–500 т/мес</span></div>
+        <div class="dir-row"><span>Каналы</span><span>Экспорт</span></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-city">Кыргызстан</div>
+        <div class="dir-brand">Mazza</div>
+        <div class="dir-row"><span>Продукт</span><span>Сухофрукты, орехи</span></div>
+        <div class="dir-row"><span>Мощность</span><span>100–200 т/мес</span></div>
+        <div class="dir-row"><span>Каналы</span><span>Экспорт</span></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-city">Исфара</div>
+        <div class="dir-brand">Famigo</div>
+        <div class="dir-row"><span>Продукт</span><span>Сухофрукты, орехи</span></div>
+        <div class="dir-row"><span>Мощность</span><span>200–300 т/мес</span></div>
+        <div class="dir-row"><span>Каналы</span><span>Экспорт</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brands" id="brands">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Бренды холдинга</p>
+      <h2>Три бренда, три категории</h2>
+      <p>Каждый бренд самостоятельно ведёт свою категорию и свой рынок, разделяя с холдингом снабжение и производственную инфраструктуру.</p>
+    </div>
+    <div class="brand-grid reveal">
+      <div class="brand-card">
+        <div>
+          <div class="brand-mark">Lola foods</div>
+          <p class="brand-desc">Сухофрукты, специи и чай — основное направление холдинга с производством в Москве.</p>
+        </div>
+        <div class="brand-cat">Сухофрукты · Специи · Чай</div>
+      </div>
+      <div class="brand-card">
+        <div>
+          <div class="brand-mark">Mazza</div>
+          <p class="brand-desc">Специи и сухофрукты для рынков Кыргызстана и экспорта.</p>
+        </div>
+        <div class="brand-cat">Специи</div>
+      </div>
+      <div class="brand-card">
+        <div>
+          <div class="brand-mark">Happy Aisha</div>
+          <p class="brand-desc">Сладости для розничных покупателей — доступный формат и понятная упаковка.</p>
+        </div>
+        <div class="brand-cat">Сладости</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow">Ассортимент</p>
+        <h2>Наши продукты</h2>
+      </div>
+      <div class="product-nav" aria-label="Прокрутка продуктов">
+        <button type="button" class="product-prev" aria-label="Прокрутить продукты влево">‹</button>
+        <button type="button" class="product-next" aria-label="Прокрутить продукты вправо">›</button>
+      </div>
+    </div>
+    <div class="product-rail reveal">
+      <div class="product-track" tabindex="0" aria-label="Фотографии продуктов FAMIGO">
+        <div class="product-slide"><img src="product-photos/churchkhela.jpg" alt="Чурчхела FAMIGO"></div>
+        <div class="product-slide"><img src="product-photos/tea.jpg" alt="Чай FAMIGO"></div>
+        <div class="product-slide"><img src="product-photos/dried-fruits.jpg" alt="Сухофрукты FAMIGO"></div>
+        <div class="product-slide"><img src="product-photos/spices.jpg" alt="Специи FAMIGO"></div>
+        <div class="product-slide"><img src="product-photos/nuts.jpg" alt="Орехи FAMIGO"></div>
+        <div class="product-slide"><img src="product-photos/raisin.jpg" alt="Изюм FAMIGO"></div>
+        <div class="product-slide"><img src="product-photos/mixed-nuts.png" alt="Орехи и сухофрукты FAMIGO"></div>
+        <div class="product-slide"><img src="product-photos/spices-table.png" alt="Специи FAMIGO"></div>
+        <div class="product-slide"><img src="product-photos/kurut.png" alt="Курут FAMIGO"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quality">
+  <div class="wrap quality-grid">
+    <div class="reveal">
+      <p class="eyebrow">Как мы работаем</p>
+      <h2>Качество проверяется на каждом шаге — от поля до упаковки</h2>
+      <ul class="quality-list">
+        <li><span class="num">01</span><span class="txt">Прямые закупки у фермерских хозяйств региона, без посредников</span></li>
+        <li><span class="num">02</span><span class="txt">Контроль сырья и готовой продукции на каждом производственном узле</span></li>
+        <li><span class="num">03</span><span class="txt">Единые стандарты упаковки и хранения во всех брендах холдинга</span></li>
+        <li><span class="num">04</span><span class="txt">Логистика и выход на новые рынки — общая инфраструктура холдинга</span></li>
+      </ul>
+    </div>
+    <div class="quality-art reveal">
+      <div class="quality-photo">
+        <img src="assets/quality-hands.jpg" alt="Орехи в руках как символ контроля качества FAMIGO">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="eyebrow">Контакты</p>
+      <h2>Партнёрство, оптовые поставки, СМИ</h2>
+      <p class="lede">Головной контакт холдинга — Шоколадная фабрика Коканд. Напишите нам, ответим по существу.</p>
+    </div>
+    <form class="reveal" onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent=(window.FAMIGO_I18N?.[window.FAMIGO_LANG]?.sent || 'Отправлено ✓');">
+      <div class="field">
+        <label for="name">Имя</label>
+        <input id="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="msg">Сообщение</label>
+        <textarea id="msg" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Отправить сообщение</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <div class="logo">famigo<span>.</span></div>
+      <p>Холдинг, объединяющий Lola foods, Mazza и Happy Aisha в трёх странах.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Холдинг</h4>
+      <a href="#about">О компании</a>
+      <a href="#history">История</a>
+      <a href="#directions">Направления</a>
+    </div>
+    <div class="footer-col">
+      <h4>Бренды</h4>
+      <a href="#brands">Lola foods</a>
+      <a href="#brands">Mazza</a>
+      <a href="#brands">Happy Aisha</a>
+    </div>
+    <div class="footer-col">
+      <h4>Связь</h4>
+      <a href="mailto:hello@famigo.tj">hello@famigo.tj</a>
+      <a href="#contact">Шоколадная фабрика Коканд</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <div>© 2026 FAMIGO Holding</div>
+    <div>Россия · Узбекистан · Кыргызстан · Таджикистан</div>
+  </div>
+</footer>
+
+<script>
+  const I18N = {
+    ru: {
+      title: 'FAMIGO — пищевой холдинг Центральной Азии',
+      languageSelect: 'Выбор языка',
+      navAbout: 'О холдинге',
+      navHistory: 'История',
+      navDirections: 'Направления',
+      navBrands: 'Бренды',
+      navContact: 'Контакты',
+      contactCta: 'Связаться',
+      heroEyebrow: 'Пищевой холдинг · с 2023 года',
+      heroTitle: 'Сухофрукты и орехи,<br>собранные <em>под одной крышей</em>',
+      heroText: 'FAMIGO объединяет производственные направления Lola foods, Mazza и Happy Aisha в четырёх городах — от переработки сырья до поставок в торговые сети и на экспорт.',
+      heroPrimary: 'Наши бренды',
+      heroSecondary: 'О холдинге →',
+      stats: ['год основания холдинга FAMIGO', 'человек в команде холдинга', 'тонн продукции в год суммарно по всем направлениям', 'производственные площадки в трёх странах'],
+      aboutEyebrow: 'О холдинге',
+      aboutTitle: 'Локальные рецепты. Управление на уровне международного бизнеса.',
+      aboutText: [
+        'Холдинг вырос из одного производства без единого сотрудника — сегодня в команде FAMIGO работает более 50 человек.',
+        'Наша цель — стать узнаваемым холдингом, на который другие компании региона будут смотреть как на пример: как выстраивать производство, качество и экспорт одновременно в нескольких странах.',
+        'Каждое направление — Lola foods, Mazza, Happy Aisha и производственные площадки под брендом Famigo — отвечает за свой рынок и продукт, опираясь на общую инфраструктуру холдинга.'
+      ],
+      historyEyebrow: 'История',
+      historyTitle: 'От первого производства до холдинга в трёх странах',
+      timeline: [
+        ['Первое производство в России', 'Первые партии сухофруктов и орехов для локального рынка.'],
+        ['Выход в первую сеть супермаркетов', 'Появились регулярные поставки и понятная розничная упаковка.'],
+        ['Начало оптовой продажи', 'Компания усилила закупку, фасовку и работу с B2B-клиентами.'],
+        ['Создана компания Lola foods', 'Отдельное направление для сухофруктов, специй и чая в Москве.'],
+        ['Создан Famigo в Узбекистане', 'Ближе к сырью, фермерам и экспортной логистике региона.'],
+        ['Создана компания Mazza в Кыргызстане', 'Новая площадка для специй, сухофруктов и региональных поставок.'],
+        ['Открытие Famigo в Таджикистане', 'Расширение холдинга и укрепление производства в Центральной Азии.']
+      ],
+      geoEyebrow: 'География',
+      geoTitle: 'Растём за пределы одного рынка',
+      geoActive: 'Уже поставляем',
+      geoExplore: 'Рассматриваем',
+      geoItems: ['Россия', 'Арабские страны', 'Европа', 'Китай'],
+      directionsEyebrow: 'Производственные направления',
+      directionsTitle: 'Четыре площадки, три страны',
+      directionsText: 'Каждая площадка отвечает за свой регион сбыта — от торговых сетей до экспортных поставок.',
+      dirCities: ['Москва', 'Ташкент', 'Кыргызстан', 'Исфара'],
+      dirLabels: ['Продукт', 'Мощность', 'Каналы'],
+      dirValues: [
+        ['Сухофрукты, орехи', '200–300 т/мес', 'Сети, опт'],
+        ['Сухофрукты, орехи', '300–500 т/мес', 'Экспорт'],
+        ['Сухофрукты, орехи', '100–200 т/мес', 'Экспорт'],
+        ['Сухофрукты, орехи', '200–300 т/мес', 'Экспорт']
+      ],
+      brandsEyebrow: 'Бренды холдинга',
+      brandsTitle: 'Три бренда, три категории',
+      brandsText: 'Каждый бренд самостоятельно ведёт свою категорию и свой рынок, разделяя с холдингом снабжение и производственную инфраструктуру.',
+      brandDesc: [
+        'Сухофрукты, специи и чай — основное направление холдинга с производством в Москве.',
+        'Специи и сухофрукты для рынков Кыргызстана и экспорта.',
+        'Сладости для розничных покупателей — доступный формат и понятная упаковка.'
+      ],
+      brandCats: ['Сухофрукты · Специи · Чай', 'Специи', 'Сладости'],
+      productsEyebrow: 'Ассортимент',
+      productsTitle: 'Наши продукты',
+      productsNav: 'Прокрутка продуктов',
+      productPrev: 'Прокрутить продукты влево',
+      productNext: 'Прокрутить продукты вправо',
+      productTrack: 'Фотографии продуктов FAMIGO',
+      productAlts: ['Чурчхела FAMIGO', 'Чай FAMIGO', 'Сухофрукты FAMIGO', 'Специи FAMIGO', 'Орехи FAMIGO', 'Изюм FAMIGO', 'Орехи и сухофрукты FAMIGO', 'Специи FAMIGO', 'Курут FAMIGO'],
+      qualityEyebrow: 'Как мы работаем',
+      qualityTitle: 'Качество проверяется на каждом шаге — от поля до упаковки',
+      qualityItems: [
+        'Прямые закупки у фермерских хозяйств региона, без посредников',
+        'Контроль сырья и готовой продукции на каждом производственном узле',
+        'Единые стандарты упаковки и хранения во всех брендах холдинга',
+        'Логистика и выход на новые рынки — общая инфраструктура холдинга'
+      ],
+      qualityAlt: 'Орехи в руках как символ контроля качества FAMIGO',
+      contactEyebrow: 'Контакты',
+      contactTitle: 'Партнёрство, оптовые поставки, СМИ',
+      contactText: 'Головной контакт холдинга — Шоколадная фабрика Коканд. Напишите нам, ответим по существу.',
+      formName: 'Имя',
+      formEmail: 'Email',
+      formMessage: 'Сообщение',
+      formSubmit: 'Отправить сообщение',
+      sent: 'Отправлено ✓',
+      footerText: 'Холдинг, объединяющий Lola foods, Mazza и Happy Aisha в трёх странах.',
+      footerCompany: 'Холдинг',
+      footerAbout: 'О компании',
+      footerBrands: 'Бренды',
+      footerContact: 'Связь',
+      footerFactory: 'Шоколадная фабрика Коканд',
+      footerCountries: 'Россия · Узбекистан · Кыргызстан · Таджикистан'
+    },
+    en: {
+      title: 'FAMIGO — Central Asian food holding',
+      languageSelect: 'Language selection',
+      navAbout: 'About',
+      navHistory: 'History',
+      navDirections: 'Operations',
+      navBrands: 'Brands',
+      navContact: 'Contacts',
+      contactCta: 'Contact us',
+      heroEyebrow: 'Food holding · since 2023',
+      heroTitle: 'Dried fruits and nuts,<br>brought <em>under one roof</em>',
+      heroText: 'FAMIGO brings together Lola foods, Mazza and Happy Aisha production lines across four cities — from raw material processing to retail supply and export.',
+      heroPrimary: 'Our brands',
+      heroSecondary: 'About us →',
+      stats: ['year FAMIGO holding was founded', 'people in the holding team', 'tons of annual output across all directions', 'production sites in three countries'],
+      aboutEyebrow: 'About',
+      aboutTitle: 'Local recipes. Management at international business level.',
+      aboutText: [
+        'The holding grew from one production site with no employees — today the FAMIGO team has more than 50 people.',
+        'Our goal is to become a recognizable regional holding that other companies can look to as an example of building production, quality and export across several countries.',
+        'Each direction — Lola foods, Mazza, Happy Aisha and Famigo production sites — serves its own market and product while relying on the shared infrastructure of the holding.'
+      ],
+      historyEyebrow: 'History',
+      historyTitle: 'From the first production site to a holding in three countries',
+      timeline: [
+        ['First production in Russia', 'First batches of dried fruits and nuts for the local market.'],
+        ['Entered the first supermarket chain', 'Regular deliveries and clear retail packaging appeared.'],
+        ['Wholesale sales began', 'The company strengthened sourcing, packing and B2B operations.'],
+        ['Lola foods was established', 'A separate direction for dried fruits, spices and tea in Moscow.'],
+        ['Famigo was established in Uzbekistan', 'Closer to raw materials, farmers and regional export logistics.'],
+        ['Mazza was established in Kyrgyzstan', 'A new site for spices, dried fruits and regional supply.'],
+        ['Famigo opens in Tajikistan', 'Expansion of the holding and stronger production in Central Asia.']
+      ],
+      geoEyebrow: 'Geography',
+      geoTitle: 'Growing beyond one market',
+      geoActive: 'Already supplying',
+      geoExplore: 'Exploring',
+      geoItems: ['Russia', 'Arab countries', 'Europe', 'China'],
+      directionsEyebrow: 'Production directions',
+      directionsTitle: 'Four sites, three countries',
+      directionsText: 'Each site is responsible for its sales region — from retail chains to export deliveries.',
+      dirCities: ['Moscow', 'Tashkent', 'Kyrgyzstan', 'Isfara'],
+      dirLabels: ['Product', 'Capacity', 'Channels'],
+      dirValues: [
+        ['Dried fruits, nuts', '200–300 t/mo', 'Retail, wholesale'],
+        ['Dried fruits, nuts', '300–500 t/mo', 'Export'],
+        ['Dried fruits, nuts', '100–200 t/mo', 'Export'],
+        ['Dried fruits, nuts', '200–300 t/mo', 'Export']
+      ],
+      brandsEyebrow: 'Holding brands',
+      brandsTitle: 'Three brands, three categories',
+      brandsText: 'Each brand manages its own category and market while sharing sourcing and production infrastructure with the holding.',
+      brandDesc: ['Dried fruits, spices and tea — the holding’s core direction with production in Moscow.', 'Spices and dried fruits for Kyrgyzstan and export markets.', 'Sweets for retail customers — an accessible format and clear packaging.'],
+      brandCats: ['Dried fruits · Spices · Tea', 'Spices', 'Sweets'],
+      productsEyebrow: 'Assortment',
+      productsTitle: 'Our products',
+      productsNav: 'Product carousel',
+      productPrev: 'Scroll products left',
+      productNext: 'Scroll products right',
+      productTrack: 'FAMIGO product photos',
+      productAlts: ['FAMIGO churchkhela', 'FAMIGO tea', 'FAMIGO dried fruits', 'FAMIGO spices', 'FAMIGO nuts', 'FAMIGO raisins', 'FAMIGO nuts and dried fruits', 'FAMIGO spices', 'FAMIGO kurut'],
+      qualityEyebrow: 'How we work',
+      qualityTitle: 'Quality is checked at every step — from field to packaging',
+      qualityItems: ['Direct sourcing from regional farms, without intermediaries', 'Raw material and finished product control at every production unit', 'Unified packaging and storage standards across all holding brands', 'Logistics and new market access through the holding’s shared infrastructure'],
+      qualityAlt: 'Nuts in hands as a symbol of FAMIGO quality control',
+      contactEyebrow: 'Contacts',
+      contactTitle: 'Partnerships, wholesale supply, media',
+      contactText: 'The holding’s main contact is Kokand Chocolate Factory. Write to us and we will reply clearly.',
+      formName: 'Name',
+      formEmail: 'Email',
+      formMessage: 'Message',
+      formSubmit: 'Send message',
+      sent: 'Sent ✓',
+      footerText: 'A holding that brings together Lola foods, Mazza and Happy Aisha in three countries.',
+      footerCompany: 'Holding',
+      footerAbout: 'About company',
+      footerBrands: 'Brands',
+      footerContact: 'Contact',
+      footerFactory: 'Kokand Chocolate Factory',
+      footerCountries: 'Russia · Uzbekistan · Kyrgyzstan · Tajikistan'
+
+    }
+  };
+
+  window.FAMIGO_I18N = I18N;
+  window.FAMIGO_LANG = 'ru';
+
+  const langNames = {ru:'ru', en:'en'};
+  const textTargets = [
+    ['.nav-links a[href="#about"]','navAbout'], ['.nav-links a[href="#history"]','navHistory'],
+    ['.nav-links a[href="#directions"]','navDirections'], ['.nav-links a[href="#brands"]','navBrands'],
+    ['.nav-links a[href="#contact"]','navContact'], ['.nav-cta','contactCta'],
+    ['.hero .eyebrow','heroEyebrow'], ['.hero .lede','heroText'], ['.btn-primary','heroPrimary'], ['.btn-ghost','heroSecondary'],
+    ['.intro .eyebrow','aboutEyebrow'], ['.intro h2','aboutTitle'],
+    ['.history .eyebrow','historyEyebrow'], ['.history h2','historyTitle'],
+    ['.geo .eyebrow','geoEyebrow'], ['.geo h2','geoTitle'], ['.geo-col.active h3','geoActive'], ['.geo-col.explore h3','geoExplore'],
+    ['.directions .eyebrow','directionsEyebrow'], ['.directions h2','directionsTitle'], ['.directions .section-head p:last-child','directionsText'],
+    ['.brands .eyebrow','brandsEyebrow'], ['.brands h2','brandsTitle'], ['.brands .section-head p:last-child','brandsText'],
+    ['.products .eyebrow','productsEyebrow'], ['.products h2','productsTitle'],
+    ['.quality .eyebrow','qualityEyebrow'], ['.quality h2','qualityTitle'],
+    ['.contact .eyebrow','contactEyebrow'], ['.contact h2','contactTitle'], ['.contact .lede','contactText'],
+    ['.field label[for="name"]','formName'], ['.field label[for="email"]','formEmail'], ['.field label[for="msg"]','formMessage'],
+    ['.submit-btn','formSubmit'], ['.footer-brand p','footerText'],
+    ['.footer-col:nth-of-type(2) h4','footerCompany'], ['.footer-col:nth-of-type(2) a[href="#about"]','footerAbout'],
+    ['.footer-col:nth-of-type(2) a[href="#history"]','navHistory'], ['.footer-col:nth-of-type(2) a[href="#directions"]','navDirections'],
+    ['.footer-col:nth-of-type(3) h4','footerBrands'], ['.footer-col:nth-of-type(4) h4','footerContact'],
+    ['.footer-col:nth-of-type(4) a[href="#contact"]','footerFactory'], ['.footer-bottom div:last-child','footerCountries']
+  ];
+
+  function setText(selector, value){
+    document.querySelectorAll(selector).forEach((el)=>{ el.textContent = value; });
+  }
+
+  function setAria(selector, value){
+    const el = document.querySelector(selector);
+    if(el){ el.setAttribute('aria-label', value); }
+  }
+
+  function applyLanguage(lang){
+    const dict = I18N[lang] || I18N.ru;
+    window.FAMIGO_LANG = lang;
+    document.documentElement.lang = langNames[lang] || 'ru';
+    document.title = dict.title;
+
+    textTargets.forEach(([selector, key])=>setText(selector, dict[key]));
+    document.querySelector('.hero h1').innerHTML = dict.heroTitle;
+
+    document.querySelectorAll('.stat-label').forEach((el, index)=>{ el.textContent = dict.stats[index]; });
+    document.querySelectorAll('.intro-text p').forEach((el, index)=>{ el.textContent = dict.aboutText[index]; });
+    document.querySelectorAll('.tl-item').forEach((item, index)=>{
+      const row = dict.timeline[index];
+      if(!row){ return; }
+      item.querySelector('.tl-text').textContent = row[0];
+      item.querySelector('.tl-note').textContent = row[1];
+    });
+
+    const geoItems = document.querySelectorAll('.geo-item');
+    geoItems.forEach((item, index)=>{ item.innerHTML = `<span class="dot"></span>${dict.geoItems[index]}`; });
+
+    document.querySelectorAll('.dir-card').forEach((card, cardIndex)=>{
+      const city = card.querySelector('.dir-city');
+      if(city){ city.textContent = dict.dirCities[cardIndex]; }
+      card.querySelectorAll('.dir-row').forEach((row, rowIndex)=>{
+        const spans = row.querySelectorAll('span');
+        spans[0].textContent = dict.dirLabels[rowIndex];
+        spans[1].textContent = dict.dirValues[cardIndex][rowIndex];
+      });
+    });
+
+    document.querySelectorAll('.brand-desc').forEach((el, index)=>{ el.textContent = dict.brandDesc[index]; });
+    document.querySelectorAll('.brand-cat').forEach((el, index)=>{ el.textContent = dict.brandCats[index]; });
+    document.querySelectorAll('.product-slide img').forEach((img, index)=>{ img.alt = dict.productAlts[index]; });
+    document.querySelectorAll('.quality-list .txt').forEach((el, index)=>{ el.textContent = dict.qualityItems[index]; });
+
+    const qualityImg = document.querySelector('.quality-photo img');
+    if(qualityImg){ qualityImg.alt = dict.qualityAlt; }
+
+    setAria('.lang-switch', dict.languageSelect);
+    setAria('.product-nav', dict.productsNav);
+    setAria('.product-prev', dict.productPrev);
+    setAria('.product-next', dict.productNext);
+    setAria('.product-track', dict.productTrack);
+
+    const select = document.querySelector('.lang-switch');
+    if(select){ select.value = lang; }
+    localStorage.setItem('famigo-lang', lang);
+  }
+
+  const langSelect = document.querySelector('.lang-switch');
+  const savedLang = localStorage.getItem('famigo-lang');
+  const browserLang = (navigator.language || 'ru').slice(0,2);
+  const initialLang = I18N[savedLang] ? savedLang : (I18N[browserLang] ? browserLang : 'ru');
+  applyLanguage(initialLang);
+  langSelect?.addEventListener('change', (event)=>applyLanguage(event.target.value));
+
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12});
+  els.forEach(el=>io.observe(el));
+
+  const historyScene = document.querySelector('.history-scroll');
+  const historyTrack = document.querySelector('.history-scroll .timeline');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let historyTicking = false;
+
+  function updateHistoryTrack(){
+    historyTicking = false;
+    if(!historyScene || !historyTrack || reduceMotion.matches){
+      return;
+    }
+
+    const rect = historyScene.getBoundingClientRect();
+    const sceneScroll = Math.max(1, historyScene.offsetHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, -rect.top / sceneScroll));
+    const sidePadding = window.innerWidth < 820 ? 40 : 64;
+    const maxMove = Math.max(0, historyTrack.scrollWidth - window.innerWidth + sidePadding);
+    historyTrack.style.transform = `translate3d(${-progress * maxMove}px,0,0)`;
+  }
+
+  function requestHistoryUpdate(){
+    if(!historyTicking){
+      historyTicking = true;
+      requestAnimationFrame(updateHistoryTrack);
+    }
+  }
+
+  window.addEventListener('scroll', requestHistoryUpdate, {passive:true});
+  window.addEventListener('resize', updateHistoryTrack);
+  reduceMotion.addEventListener('change', updateHistoryTrack);
+  updateHistoryTrack();
+
+  const productTrack = document.querySelector('.product-track');
+  const productPrev = document.querySelector('.product-prev');
+  const productNext = document.querySelector('.product-next');
+
+  function scrollProducts(direction){
+    if(!productTrack){
+      return;
+    }
+
+    const firstSlide = productTrack.querySelector('.product-slide');
+    const gap = 20;
+    const amount = firstSlide ? firstSlide.offsetWidth + gap : productTrack.clientWidth * 0.8;
+    productTrack.scrollBy({left: direction * amount, behavior: 'smooth'});
+  }
+
+  productPrev?.addEventListener('click', ()=>scrollProducts(-1));
+  productNext?.addEventListener('click', ()=>scrollProducts(1));
+</script>
+
+</body>
+</html>
