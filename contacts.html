@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты FAMIGO — опт, экспорт, партнёрство</title>
+<meta name="description" content="Свяжитесь с холдингом FAMIGO по вопросам оптовых поставок, экспорта, private label и партнёрства. Отвечаем на заявку в течение 24 часов в рабочие дни.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contacts">
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo">famigo<span>.</span></a>
+    <nav class="nav-links">
+      <a href="products.html">Продукция</a>
+      <a href="quality.html">Качество</a>
+      <a href="partners.html">Сотрудничество</a>
+      <a href="about.html">О холдинге</a>
+      <a href="contacts.html" aria-current="page">Контакты</a>
+    </nav>
+    <div class="nav-actions">
+      <select class="lang-switch" aria-label="Выбор языка"><!-- TODO: английская версия отдельным этапом, без машинного перевода -->
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
+      <a href="#contact-form" class="nav-cta">Получить образец</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Контакты</p>
+    <h1>Партнёрство, оптовые поставки, экспорт</h1>
+    <p>Напишите нам, ответим по существу — в течение 24 часов в рабочие дни.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact-form">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="eyebrow">Прямые контакты</p>
+      <h2>Свяжитесь с нужным направлением</h2>
+      <!-- TODO: заменить на реальные данные заказчика -->
+      <div class="contact-info-list">
+        <div class="contact-info-row"><span class="label">Опт, Россия</span><span class="value"><a href="tel:+74950000000">+7 (495) 000-00-00</a></span></div>
+        <div class="contact-info-row"><span class="label">Экспорт (WhatsApp / Telegram)</span><span class="value"><a href="tel:+998900000000">+998 90 000-00-00</a></span></div>
+        <div class="contact-info-row"><span class="label">Таджикистан</span><span class="value"><a href="tel:+992930000000">+992 93 000-00-00</a></span></div>
+        <div class="contact-info-row"><span class="label">Отдел продаж</span><span class="value"><a href="mailto:sales@famigo.tj">sales@famigo.tj</a></span></div>
+        <div class="contact-info-row"><span class="label">Экспорт</span><span class="value"><a href="mailto:export@famigo.tj">export@famigo.tj</a></span></div>
+        <div class="contact-info-row"><span class="label">Общий email</span><span class="value"><a href="mailto:hello@famigo.tj">hello@famigo.tj</a></span></div>
+      </div>
+
+      <div class="chat-buttons">
+        <!-- TODO: заменить на реальные номер/юзернейм WhatsApp и Telegram -->
+        <a class="chat-btn" href="https://wa.me/998900000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="chat-btn" href="https://t.me/famigo_export" target="_blank" rel="noopener">Telegram</a>
+      </div>
+
+      <div class="addresses">
+        <!-- TODO: заменить на реальные адреса заказчика -->
+        <div class="address-item"><span class="city">Москва</span>ул. ______ · ООО «Лола Фудс» (РФ)</div>
+        <div class="address-item"><span class="city">Ташкент</span>ул. ______ · Famigo Central Asia LLC (УЗ)</div>
+        <div class="address-item"><span class="city">Бишкек</span>ул. ______ · ОсОО «Мазза» (КР)</div>
+        <div class="address-item"><span class="city">Исфара</span>ул. ______ · ООО «Фамиго» (РТ)</div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="eyebrow">Форма заявки</p>
+      <h2>Отправить заявку</h2>
+      <p class="lede">Ответим в течение 24 часов в рабочие дни.</p>
+
+      <!-- TODO: подключить обработку формы на бэкенде; сейчас используется mailto-фолбэк -->
+      <form class="contact-form" action="mailto:sales@famigo.tj" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="name">Имя</label>
+          <input id="name" name="name" type="text" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="company">Компания <span class="req">*</span></label>
+          <input id="company" name="company" type="text" required autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="phone">Телефон <span class="req">*</span></label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel" pattern="^[0-9+()\s-]{6,}$">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="type">Тип запроса</label>
+          <select id="type" name="type" required>
+            <option value="" disabled selected>Выберите тип запроса</option>
+            <option value="Опт">Опт</option>
+            <option value="Экспорт">Экспорт</option>
+            <option value="Private label">Private label</option>
+            <option value="СМИ">СМИ</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">Сообщение</label>
+          <textarea id="msg" name="message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Отправить заявку</button>
+        <p class="field-hint">Поля «Компания» и «Телефон» обязательны для заполнения.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">famigo<span>.</span></div>
+        <p>Холдинг объединяет Lola foods, Mazza, Happy Aisha и Famigo в четырёх странах — от закупки сырья до полки торговой сети.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Холдинг</h4>
+        <a href="about.html">О холдинге</a>
+        <a href="about.html#history">История</a>
+        <a href="about.html#directions">Площадки</a>
+      </div>
+      <div class="footer-col">
+        <h4>Бренды</h4>
+        <a href="about.html#brands">Lola foods</a>
+        <a href="about.html#brands">Mazza</a>
+        <a href="about.html#brands">Happy Aisha</a>
+        <a href="about.html#brands">Famigo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <!-- TODO: заменить на реальные данные заказчика -->
+        <a href="tel:+74950000000">Опт, Россия: +7 (495) 000-00-00</a>
+        <a href="https://wa.me/998900000000">Экспорт: +998 90 000-00-00</a>
+        <a href="mailto:hello@famigo.tj">hello@famigo.tj</a>
+        <a href="contacts.html">Все контакты →</a>
+      </div>
+    </div>
+    <div class="footer-addresses">
+      <!-- TODO: заменить на реальные адреса заказчика -->
+      <div class="addr"><b>Москва</b>ул. ______</div>
+      <div class="addr"><b>Ташкент</b>ул. ______</div>
+      <div class="addr"><b>Бишкек</b>ул. ______</div>
+      <div class="addr"><b>Исфара</b>ул. ______</div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 FAMIGO Holding</div>
+      <div>Россия · Узбекистан · Кыргызстан · Таджикистан</div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

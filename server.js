@@ -24,7 +24,7 @@ function send(res, status, body, headers = {}) {
 
 function safePath(urlPath) {
   const decoded = decodeURIComponent(urlPath.split('?')[0]);
-  const requestPath = decoded === '/' ? '/holding.html' : decoded;
+  const requestPath = decoded === '/' ? '/index.html' : decoded;
   const filePath = path.normalize(path.join(root, requestPath));
   return filePath.startsWith(root) ? filePath : null;
 }
