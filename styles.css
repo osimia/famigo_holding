@@ -269,8 +269,8 @@ section{padding:92px 0;background:#fff;}
 .catalog-head .cat-note{font-size:13px;color:var(--olive-soft);}
 .item-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .item-card{background:var(--cream-2);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;}
-.item-photo{aspect-ratio:4/3;background:var(--cream);overflow:hidden;}
-.item-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.item-photo{aspect-ratio:4/5;background:var(--cream);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.item-photo img{width:100%;height:100%;object-fit:contain;display:block;}
 .item-body{padding:22px 24px 26px;}
 .item-name{font-size:18px;font-weight:800;}
 .item-meta{margin-top:8px;font-size:13.5px;color:var(--olive-dark);line-height:1.5;}
@@ -297,6 +297,23 @@ section{padding:92px 0;background:#fff;}
   border-radius:10px;display:inline-block;transition:border-color .2s ease,color .2s ease;
 }
 .btn-outline:hover{border-color:var(--olive-dark);}
+
+/* ---------- AUTO-SCROLLING PRODUCT CAROUSEL (home) ---------- */
+.auto-rail{
+  overflow:hidden;margin-top:18px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+}
+.auto-track{display:flex;gap:20px;width:max-content;animation:auto-scroll 50s linear infinite;}
+.auto-rail:hover .auto-track, .auto-rail:focus-within .auto-track{animation-play-state:paused;}
+.auto-slide{
+  flex:0 0 200px;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;
+  background:var(--cream);display:flex;align-items:center;justify-content:center;
+}
+.auto-slide img{width:100%;height:100%;object-fit:contain;display:block;}
+@keyframes auto-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media (max-width:560px){.auto-slide{flex-basis:140px;}}
+@media (prefers-reduced-motion: reduce){.auto-track{animation:none;}}
 
 /* ---------- QUALITY BAND (dark) ---------- */
 .quality{
